@@ -1,5 +1,6 @@
-import styled from "styled-components"
+import styled, { keyframes } from "styled-components"
 import { device } from "../../utils/reponsive"
+import { fadeInUp } from "react-animations"
 
 export const RootContainer = styled.div`
     margin: auto;
@@ -36,6 +37,10 @@ export const Cover = styled.div`
     margin-top: 50px;
     img {
         width: 300px;
+    }
+
+    &:hover {
+        cursor: pointer;
     }
 
     @media ${device.mobileS} { 
@@ -86,3 +91,59 @@ export const Cover = styled.div`
         margin-top: 50px;
     }
 `
+
+export const LyricsContainer = styled.div`
+    position: absolute;
+    background: #000000db;
+    top: 0;
+    width: 100%;
+    height: 100%;
+
+    &:hover {
+        cursor: pointer;
+    }
+`
+
+export const LyricsWrapper = styled.div`
+    font-size: 26px;
+    font-weight: 600;
+    text-align: center;
+    padding: 0 20px;
+
+    @media ${device.mobileS} { 
+        margin-top: 20px;
+    }
+
+    @media ${device.mobileM} { 
+        margin-top: 300px;
+    }
+
+    @media ${device.mobileL} { 
+        margin-top: 150px;
+    }
+
+    @media ${device.tablet} { 
+        font-size: 50px;
+        margin-top: 200px;
+    }
+
+    @media ${device.laptopL} { 
+        margin-top: 350px;
+    }
+`
+
+const fadeInUpAnimation = keyframes`${fadeInUp}`
+
+export const CurrentLyrics = styled.p`
+    color: white;
+    animation: 0.2s ${fadeInUpAnimation};
+`
+
+export const CurrentLyricsAnimation = styled(CurrentLyrics)``
+
+export const NextLyrics = styled.p`
+    font-size: 18px;
+    color: gray;
+`
+
+export const NextLyricsAnimation = styled(NextLyrics)``

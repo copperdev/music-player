@@ -10,7 +10,7 @@ import { ReactComponent as ShuffleIcon } from "../../assets/icons/shuffle.svg"
 
 import { WrapperPlayer, Title, Artist, ControlButtons, PreviousButton, PlayButton, NextButton, OtherButton, WrapSlider, Slider, TimeInfos } from "./styles"
 
-const AudioPlayer = ({ music, handlePrevious, handleNext, indexActiveSong, shuffleOrder }) => {
+const AudioPlayer = ({ music, handlePrevious, handleNext, indexActiveSong, shuffleOrder, lyrics, setCurrentLyrics }) => {
     const [player, setPlayer] = useState()
     const [play, setPlay] = useState(false)
     const [shuffle, setShuffle] = useState(false)
@@ -41,6 +41,7 @@ const AudioPlayer = ({ music, handlePrevious, handleNext, indexActiveSong, shuff
     useEffect(() => {
         setTime(0)
         setCurrentTime("0:00")
+        setCurrentLyrics(["[...]"])
         const metaThemeColor = document.querySelector("meta[name=theme-color]")
         metaThemeColor.setAttribute("content", music.coverColor)
         document.body.style.backgroundImage = `linear-gradient(${music.coverColor}, rgba(0, 0, 0, 0.911), #000)`
@@ -76,6 +77,10 @@ const AudioPlayer = ({ music, handlePrevious, handleNext, indexActiveSong, shuff
             handleNext()
         } 
         if (!seeking) {
+            const indexLyrics = lyrics.findIndex(item => timeFormat(item.seconds - music.lyricsDelay) === timeFormat(state.playedSeconds))
+            if (indexLyrics !== -1) {
+                setCurrentLyrics([lyrics[indexLyrics].lyrics, lyrics[indexLyrics+1].lyrics])
+            }
             setCurrentTime(timeFormat(state.playedSeconds))
             setTime(parseFloat(state.played))
         }
