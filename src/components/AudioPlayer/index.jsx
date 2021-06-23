@@ -45,7 +45,7 @@ const AudioPlayer = ({ music, handlePrevious, handleNext, indexActiveSong, shuff
         const metaThemeColor = document.querySelector("meta[name=theme-color]")
         metaThemeColor.setAttribute("content", music.coverColor)
         document.body.style.backgroundImage = `linear-gradient(${music.coverColor}, rgba(0, 0, 0, 0.911), #000)`
-    }, [music, indexActiveSong])
+    }, [music, indexActiveSong, setCurrentLyrics])
 
     const ref = (player) => {
         setPlayer(player)

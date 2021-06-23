@@ -23,7 +23,7 @@ const AudioContainer = ({ indexActiveSong, music, handlePrevious, handleNext, sh
     }, [music])  
     
     useEffect(() => {
-        setAnimation(!animation)
+        setAnimation(a => !a)
     }, [currentLyrics])
 
     return (
