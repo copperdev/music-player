@@ -20,7 +20,7 @@ export const musics = [
         coverColor: "#0454f2",
         lyricsDelay: 7.2,
         url: "https://storage.googleapis.com/music-player-copperdev/smells-like.mp3",
-        artist: "Daft Punk ft. Pharrell Williams, Nile Rodgers"
+        artist: "Nirvana"
     },
     {
         title: "Billie Jean",
